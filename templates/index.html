@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>一覧ページ</title>
+  </head>
+  <body>
+    <header>
+      <h1>支出管理アプリ</h1>
+    </header>
+
+    
+    <div class="wrap">
+      <div class="input">
+        <form action="/new" method="post">
+          <p>商品 :<input type="text" name="title" size="30"placeholder="商品名"/></p>
+          <p>値段 :<input type="number" name="price" size="30" placeholder="値段" /></p>
+          <p>購入日 :<input type="date" name="day" size="30" value="2022年09月01日" /></p>
+          <p><input type="submit" value="送信" /></p>
+        </form>
+      </div>
+      <div class="indexGet">
+        <p>購入回数 : {{.num}}</p>
+        <p>合計金額 : {{.sumPrice}}</p>
+        <ul>
+          {{range.books}}
+          <li>
+            商品:{{.Title}}     値段:{{.Price}}    購入日:{{.Day}}
+            <label><a href="/edit/{{.ID}}">編集</a></label>
+            <label><a href="/delete_confirm/{{.ID}}">削除</a></label>
+          </li>
+          {{end}}
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
